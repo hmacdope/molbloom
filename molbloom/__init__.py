@@ -1,9 +1,20 @@
 from .version import __version__
-from molbloom.bloom import BloomFilter, CustomFilter
 import os
 import molbloom.data
 from importlib_resources import files
 from dataclasses import dataclass
+
+
+
+class BloomFilter:
+    def __new__(cls, filename):
+        return BloomFilter_(filename)
+    
+
+class CustomFilter:
+    def __new__(cls, size, n, name):
+        return CustomFilter_(size, n, name)
+
 
 _filters = {
     "zinc20": None,
