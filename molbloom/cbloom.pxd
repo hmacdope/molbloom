@@ -1,6 +1,6 @@
 from libc cimport stdint
 
-cdef extern from "bloom/bloom.h":
+cdef extern from "bloom_h/bloom.h":
 
     ctypedef struct bloom_t:
         pass

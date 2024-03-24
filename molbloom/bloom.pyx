@@ -1,14 +1,11 @@
 # distutils: include_dirs =  molbloom
 
 from libc cimport stdint
-from . cimport cbloom
 
 
 cdef class BloomFilter:
     '''A read-only bloom filter -- use this if you want to load a filter from disk
     '''
-    cdef cbloom.bloom_t * _c_bloom
-
     def __cinit__(self, str filename):
         tmp = filename.encode('UTF-8')
         cdef char * bfilename = tmp
@@ -37,7 +34,6 @@ cdef class CustomFilter:
     name : str
         The name of the filter.
     '''
-    cdef cbloom.bloom_t * _c_bloom
 
     def __cinit__(self, stdint.uint64_t size, stdint.uint64_t n, str name):
         tmp = name.encode('UTF-8')
